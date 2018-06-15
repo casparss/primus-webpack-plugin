@@ -37,6 +37,31 @@ class PrimusWebpackPlugin {
       const source = this.options.minify
         ? uglify.minify(clientLib, { fromString: true })
         : { code: clientLib };
+      
+      /*
+       *  Really dirty hack of this plugin to stop the production
+       *  Ionic app-scripts build throw an error over there not
+       *  being a source map for the generated file. Not really sure
+       *  why sourcemaps would be important in a production build so
+       *  I'm adding this stubbed nonsense one to satify the build.
+       */
+      compilation.assets[`${filename}.map`] = {
+        source() {
+          return `
+            {
+              "version" : 3,
+              "file": "primus-client.js",
+              "sourceRoot" : "",
+              "sources": ["foo.js", "bar.js"],
+              "names": ["src", "maps", "are", "fun"],
+              "mappings": "AAgBC,SAAQ,CAAEA"
+            }
+          `
+        },
+        size() {
+          return 0
+        }
+      }
 
       compilation.assets[filename] = {
         source() {
