@@ -1,6 +1,6 @@
 # Fork of PrimusWebpackPlugin (for use with Ionic 3)
 ##
-This fork is just a hacked version of the plugin to stop Ionic app-scripts throwing an error about a source map that hasn't been generated when triggering a production build! not really sure why sourcemaps would be needed in prod, so I've generated a stubbed nonsense source map to satisfy app-scripts.
+This fork is just a hacked version of the plugin to stop Ionic app-scripts throwing an error about a source map that hasn't been generated when triggering a production build! Not really even sure why sourcemaps would be needed in prod, so I've generated a stubbed nonsense source map to satisfy app-scripts.
 ### Build client side Primus script and add to build assets 📦⚡
 
 ## Introduction
